@@ -207,7 +207,9 @@ export default function WhoAreWe() {
             height={8}
           />
         </button>
-        <p className="whoAreWeCocktailSlogan">{isWineSelected ? "Red Wine" : "Midnight Craze"}</p>
+        <p className="whoAreWeCocktailSlogan">
+          {isWineSelected ? "Red Wine" : isBeerSelected ? "Miller Genuine Draft" : "Midnight Craze"}
+        </p>
         <p className="whoAreWeCocktailPrice">$8</p>
         {isCocktailSelected && (
           <p className="whoAreWeCocktailText">

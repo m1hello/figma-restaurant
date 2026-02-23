@@ -63,6 +63,8 @@
 }
 
 .whoAreWe .navRight {
+  position: relative;
+  right: 40px;
   justify-content: center;
   width: 221px;
   height: 21px;
