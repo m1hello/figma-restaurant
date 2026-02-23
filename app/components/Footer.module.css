@@ -1,0 +1,180 @@
+.footer {
+  position: relative;
+  width: 100%;
+  min-height: 309px;
+  background: #b7bca9;
+}
+
+.inner {
+  position: relative;
+  max-width: 1920px;
+  height: 309px;
+  margin: 0 auto;
+}
+
+.navItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  position: absolute;
+  width: 328px;
+  height: 21px;
+  left: 80px;
+  top: 80px;
+}
+
+.navLink {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #36392d;
+  text-decoration: none;
+}
+
+.newsletterLabel {
+  position: absolute;
+  width: 199px;
+  height: 21px;
+  right: 80px;
+  top: 80px;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #36392d;
+}
+
+.newsletterField {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 16px;
+  position: absolute;
+  width: 199px;
+  height: 51px;
+  right: 80px;
+  top: 101px;
+  border-bottom: 1px solid #000000;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #878f70;
+}
+
+.newsletterCredit {
+  position: absolute;
+  right: 80px;
+  top: 164px;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  color: #36392d;
+  text-align: right;
+  width: 320px;
+}
+
+.logo {
+  position: absolute;
+  width: 199px;
+  height: 37px;
+  left: calc(50% - 199px / 2 + 0.5px);
+  top: calc(50% - 37px / 2 - 64px);
+  font-family: Elsie, serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 37px;
+  color: #36392d;
+  text-decoration: none;
+}
+
+.social {
+  position: absolute;
+  top: 189px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.socialIcon {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #36392d;
+}
+
+.socialIcon svg {
+  width: 40px;
+  height: 40px;
+}
+
+.socialIcon path {
+  fill: currentColor;
+}
+
+@media (max-width: 1200px) {
+  .footer {
+    min-height: unset;
+  }
+
+  .inner {
+    height: auto;
+    padding: 40px 24px 32px;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 24px;
+  }
+
+  .navItems,
+  .newsletterLabel,
+  .newsletterField,
+  .newsletterCredit,
+  .logo,
+  .social {
+    position: static;
+    width: auto;
+    height: auto;
+    left: auto;
+    right: auto;
+    top: auto;
+    transform: none;
+    margin: 0;
+  }
+
+  .navItems {
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .newsletterField {
+    width: min(360px, 100%);
+  }
+
+  .logo {
+    text-align: center;
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .newsletterCredit {
+    width: min(360px, 100%);
+    text-align: center;
+  }
+}

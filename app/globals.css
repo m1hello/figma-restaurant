@@ -1,0 +1,1335 @@
+@import url("https://api.fontshare.com/v2/css?f[]=clash-display@700&display=swap");
+
+:root {
+  --Main-10: #1b1d16;
+  --Main-80: #cfd2c6;
+  --bg: #12140f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--Main-80);
+  font-family: Roboto, sans-serif;
+}
+
+.homeBackground {
+  min-height: 100vh;
+  min-height: 100svh;
+  position: relative;
+  width: 100%;
+  background-image: url("/Full-background.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.heroTitle {
+  position: absolute;
+  width: 909px;
+  height: 192px;
+  left: 79px;
+  top: 400px;
+  margin: 0;
+  font-family: "Clash Display", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 120%;
+  color: #cfd2c6;
+}
+
+.sectionBreak {
+  width: 100%;
+  height: 120px;
+  background:
+    linear-gradient(180deg, #cfd2c6 0%, #aab09a 42%, #12140f 100%);
+}
+
+.eventsSection {
+  position: relative;
+  width: 100%;
+  min-height: 1837px;
+  background: #cfd2c6;
+  padding: 0;
+}
+
+.eventsInner {
+  position: relative;
+  max-width: 1760px;
+  margin: 0 auto;
+  padding-top: 264px;
+  padding-bottom: 80px;
+}
+
+.eventsHeading {
+  position: absolute;
+  width: 229px;
+  height: 64px;
+  left: 229px;
+  top: 80px;
+  margin: 0;
+  font-family: "Clash Display", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 64px;
+  color: #36392d;
+}
+
+.eventsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 868px);
+  gap: 24px;
+  justify-content: center;
+}
+
+.eventCard {
+  position: relative;
+  width: 868px;
+  height: 637px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.eventCardFeatured {
+  background-image: url("/Events%20page/images/Event-photo1.png");
+}
+
+.eventCard2 {
+  background-image: url("/Events%20page/images/Event-photo2.png");
+}
+
+.eventCard3 {
+  background-image: url("/Events%20page/images/Event-photo3.png");
+}
+
+.eventCard4 {
+  background-image: url("/Events%20page/images/Event-photo4.png");
+}
+
+.eventOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(149, 157, 123, 0.8);
+}
+
+.eventTitle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  font-family: "Clash Display", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.ourTeamSection {
+  position: relative;
+  width: 100%;
+  min-height: 1261px;
+  background: #cfd2c6;
+  padding: 0;
+}
+
+.whoAreWeSection {
+  position: relative;
+  width: 100%;
+  min-height: 2920px;
+  background: #cfd2c6;
+  padding: 0;
+}
+
+.whoAreWeInner {
+  position: relative;
+  max-width: 1760px;
+  margin: 0 auto;
+  min-height: 2920px;
+}
+
+.whoAreWeSlogan {
+  position: absolute;
+  width: 425px;
+  height: 64px;
+  left: 229px;
+  top: 200px;
+  margin: 0;
+  font-family: "Clash Display", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 64px;
+  color: #36392d;
+}
+
+.whoAreWeIntroText {
+  position: absolute;
+  width: 570px;
+  height: 135px;
+  left: 1121px;
+  top: 200px;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  color: #36392d;
+}
+
+.whoAreWeArrowBtn {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 2px;
+  gap: 8px;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  left: 80px;
+  top: 344px;
+  border: 1px solid #36392d;
+  border-radius: 64px;
+  background: transparent;
+}
+
+.whoAreWeArrowBtnRight {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 2px;
+  gap: 8px;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  left: 168px;
+  top: 344px;
+  border: 1px solid #36392d;
+  border-radius: 64px;
+  background: transparent;
+}
+
+.whoAreWeArrowIcon {
+  width: 20px;
+  height: 8px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.whoAreWeGallery {
+  position: absolute;
+  width: 2117px;
+  height: 433px;
+  left: -197px;
+  top: 448px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0;
+  gap: 40px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.whoAreWeInteriorImage1 {
+  width: 651px;
+  height: 433px;
+  background: url("/Who%20are%20we/restaurant-interior.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.whoAreWeInteriorImage2 {
+  width: 651px;
+  height: 433px;
+  background: url("/Who%20are%20we/restaurant-interior2.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.whoAreWeInteriorImage3 {
+  width: 651px;
+  height: 433px;
+  background: url("/Who%20are%20we/group-friends-eating-restaurant.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+.whoAreWeInteriorImage4 {
+  width: 651px;
+  height: 433px;
+  background: url("/Who%20are%20we/zoshua-colah-lyBnPZxqTAQ-unsplash%20Photo%20Zoshua%20Colaha%20on%20a%20href=httpsunsplash.comphotosdelicious-pizza-topped-with-va.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  flex: none;
+  order: 3;
+  flex-grow: 0;
+}
+
+.whoAreWeMenuSlogan {
+  position: absolute;
+  width: 184px;
+  height: 64px;
+  left: 868px;
+  top: 961px;
+  margin: 0;
+  font-family: "Clash Display", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 64px;
+  color: #36392d;
+}
+
+.whoAreWeMenuText {
+  position: absolute;
+  width: 570px;
+  height: 116px;
+  left: 675px;
+  top: 1049px;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 160%;
+  text-align: center;
+  color: #36392d;
+}
+
+.whoAreWeMenuChip {
+  box-sizing: border-box;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 40px;
+  height: 48px;
+  border: 1px solid #9fa68c;
+  border-radius: 16px;
+  background: transparent;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+  color: #36392d;
+  cursor: pointer;
+  flex: none;
+  flex-grow: 0;
+}
+
+.whoAreWeMenuChipActive {
+  background: #b7bca9;
+  border: 1px solid #b7bca9;
+}
+
+.whoAreWeMenuChipAppetizers {
+  width: 158px;
+  left: 463px;
+  top: 1189px;
+}
+
+.whoAreWeMenuChipPasta {
+  width: 121px;
+  left: 659px;
+  top: 1189px;
+}
+
+.whoAreWeMenuChipPizza {
+  width: 120px;
+  left: 820px;
+  top: 1189px;
+}
+
+.whoAreWeMenuChipSalads {
+  width: 129px;
+  left: 979px;
+  top: 1189px;
+}
+
+.whoAreWeMenuChipSoups {
+  width: 125px;
+  left: 1148px;
+  top: 1189px;
+}
+
+.whoAreWeMenuChipDesserts {
+  width: 144px;
+  left: 1313px;
+  top: 1189px;
+}
+
+.whoAreWeMenuFrames {
+  position: absolute;
+  left: 172px;
+  top: 1277px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  width: max-content;
+  height: 569px;
+}
+
+.whoAreWeMenuFrame {
+  width: 336px;
+  height: 569px;
+  flex: none;
+  flex-grow: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.whoAreWeMenuFrame9 {
+  order: 0;
+  background-image: url("/Who%20are%20we/Frame%209.png");
+}
+
+.whoAreWeMenuFrame11 {
+  order: 1;
+  background-image: url("/Who%20are%20we/Frame%2011.png");
+}
+
+.whoAreWeMenuFrame10 {
+  order: 2;
+  background-image: url("/Who%20are%20we/Frame%2010.png");
+}
+
+.whoAreWeMenuFrame12 {
+  order: 3;
+  background-image: url("/Who%20are%20we/Frame%2012.png");
+}
+
+.whoAreWeMenuFramePizza1 {
+  order: 0;
+  background-image: url("/Who%20are%20we/mediterranean%20pizza.jpg");
+}
+
+.whoAreWeMenuFramePizzaCard1 {
+  order: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: none;
+}
+
+.whoAreWeMenuFramePizzaImage1 {
+  width: 336px;
+  height: 501px;
+  background-image: url("/Who%20are%20we/mediterranean%20pizza.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.whoAreWeMenuFramePizzaTitle {
+  width: 222px;
+  height: 20px;
+  margin: 0;
+  font-family: "Clash Display", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  color: #36392d;
+  text-align: center;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.whoAreWeMenuFramePizzaPrice {
+  width: 28px;
+  height: 16px;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+  color: #36392d;
+  text-align: center;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+.whoAreWeMenuFramePizza2 {
+  order: 1;
+  background-image: url("/Who%20are%20we/Pesto%20Veggie%20Pizza.jpg");
+}
+
+.whoAreWeMenuFramePizzaCard2 {
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: none;
+}
+
+.whoAreWeMenuFramePizzaImage2 {
+  width: 336px;
+  height: 501px;
+  background-image: url("/Who%20are%20we/Pesto%20Veggie%20Pizza.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.whoAreWeMenuFramePizza3 {
+  order: 2;
+  background-image: url("/Who%20are%20we/Classic%20Veggie%20Supreme%20pizza.jpg");
+}
+
+.whoAreWeMenuFramePizzaCard3 {
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: none;
+}
+
+.whoAreWeMenuFramePizzaImage3 {
+  width: 336px;
+  height: 501px;
+  background-image: url("/Who%20are%20we/Classic%20Veggie%20Supreme%20pizza.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.whoAreWeMenuFramePizza4 {
+  order: 3;
+  background-image: url("/Who%20are%20we/Classic%20Veggie%20Supreme%20pizza.jpg");
+}
+
+.whoAreWeMenuFramePizzaCard4 {
+  order: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: none;
+}
+
+.whoAreWeMenuFramePizzaImage4 {
+  width: 336px;
+  height: 501px;
+  background-image: url("/Who%20are%20we/Margherita%20Pizza.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.whoAreWeCocktailImage {
+  position: absolute;
+  width: 570px;
+  height: 760px;
+  left: 229px;
+  top: 1926px;
+  background-image: url("/Who%20are%20we/Cocktails/emily-andreeva-hXg4gGjIfhw-unsplash%201.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.whoAreWeCocktailArrowBtn {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 2px;
+  gap: 8px;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  left: 839px;
+  top: 2496px;
+  border: 1px solid #36392d;
+  border-radius: 64px;
+  background: transparent;
+}
+
+.whoAreWeCocktailArrowBtnRight {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 2px;
+  gap: 8px;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  left: 839px;
+  top: 2596px;
+  border: 1px solid #36392d;
+  border-radius: 64px;
+  background: transparent;
+}
+
+.whoAreWeCocktailSlogan {
+  position: absolute;
+  width: 155px;
+  height: 20px;
+  left: 229px;
+  top: 2702px;
+  margin: 0;
+  font-family: "Clash Display", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  color: #36392d;
+}
+
+.whoAreWeCocktailPrice {
+  position: absolute;
+  width: 19px;
+  height: 16px;
+  left: 229px;
+  top: 2738px;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+  color: #36392d;
+}
+
+.whoAreWeCocktailText {
+  position: absolute;
+  width: 452px;
+  height: 16px;
+  left: 229px;
+  top: 2770px;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: #36392d;
+}
+
+.whoAreWeDrinksFrames {
+  position: absolute;
+  left: 1121px;
+  top: 2046px;
+  width: 570px;
+  height: 432px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+}
+
+.whoAreWeDrinkFrame {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 40px 0;
+  width: 570px;
+  height: 144px;
+  border-bottom: 1px solid #9fa68c;
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.whoAreWeDrinkFrameBtn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.whoAreWeDrinkFrame14 {
+  order: 0;
+}
+
+.whoAreWeDrinkFrame15 {
+  order: 1;
+}
+
+.whoAreWeDrinkFrame16 {
+  order: 2;
+}
+
+.whoAreWeDrinkTitle {
+  height: 64px;
+  margin: 0;
+  font-family: "Clash Display", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 64px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.whoAreWeDrinkTitleWine {
+  width: 169px;
+  color: #9fa68c;
+}
+
+.whoAreWeDrinkTitleCocktails {
+  width: 303px;
+  color: #36392d;
+}
+
+.whoAreWeDrinkTitleBeer {
+  width: 160px;
+  color: #9fa68c;
+}
+
+.whoAreWeDrinkTitleMuted {
+  color: #9fa68c;
+}
+
+.whoAreWeDrinkTitleActive {
+  color: #36392d;
+}
+
+.ourTeamInner {
+  position: relative;
+  max-width: 1760px;
+  margin: 0 auto;
+  min-height: 1261px;
+}
+
+.ourTeamSlogan {
+  position: absolute;
+  width: 305px;
+  height: 64px;
+  left: 229px;
+  top: 80px;
+  display: block;
+  object-fit: contain;
+}
+
+.ourTeamIntroText {
+  position: absolute;
+  width: 570px;
+  height: 58px;
+  left: 1121px;
+  top: 80px;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 160%;
+  color: #36392d;
+}
+
+.ourTeamPhoto {
+  width: 378px;
+  height: 567px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  background: url("/Our%20team/benu-marinescu-e6ZOmEfNHLM-unsplash.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.ourTeamCards {
+  position: absolute;
+  left: 50%;
+  top: 264px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 24px;
+  width: max-content;
+}
+
+.ourTeamAutoLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 378px;
+}
+
+.ourTeamAutoLayoutSecond {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 378px;
+}
+
+.ourTeamAutoLayoutThird {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 378px;
+}
+
+.ourTeamAutoLayoutFourth {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 378px;
+}
+
+.ourTeamPhotoSecond {
+  width: 378px;
+  height: 567px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  background: url("/Our%20team/rc-cf-FMh5o5m5N9E-unsplash.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.ourTeamPhotoThird {
+  width: 378px;
+  height: 567px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  background: url("/Our%20team/louis-hansel-v3OlBE6-fhU-unsplash.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.ourTeamPhotoFourth {
+  width: 378px;
+  height: 567px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  background: url("/Our%20team/bluebird-provisions-lRAWcT7uwhY-unsplash.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.ourTeamMemberNameFourth {
+  width: 378px;
+  height: 24px;
+  margin: 0;
+  font-family: "Clash Display", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #36392d;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.ourTeamMemberRoleFourth {
+  width: 378px;
+  height: 16px;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 16px;
+  text-align: center;
+  color: #36392d;
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.ourTeamMemberBioFourth {
+  width: 378px;
+  height: 50px;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 140%;
+  text-align: center;
+  color: #36392d;
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.ourTeamMemberNameThird {
+  width: 378px;
+  height: 24px;
+  margin: 0;
+  font-family: "Clash Display", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #36392d;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.ourTeamMemberRoleThird {
+  width: 378px;
+  height: 16px;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 16px;
+  text-align: center;
+  color: #36392d;
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.ourTeamMemberBioThird {
+  width: 378px;
+  height: 50px;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 140%;
+  text-align: center;
+  color: #36392d;
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.ourTeamMemberNameSecond {
+  width: 378px;
+  height: 24px;
+  margin: 0;
+  font-family: "Clash Display", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #36392d;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.ourTeamMemberRoleSecond {
+  width: 378px;
+  height: 16px;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 16px;
+  text-align: center;
+  color: #36392d;
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.ourTeamMemberBioSecond {
+  width: 378px;
+  height: 50px;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 140%;
+  text-align: center;
+  color: #36392d;
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.ourTeamMemberName {
+  width: 378px;
+  height: 24px;
+  margin: 0;
+  font-family: "Clash Display", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #36392d;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.ourTeamMemberRole {
+  width: 378px;
+  height: 16px;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 16px;
+  text-align: center;
+  color: #36392d;
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.ourTeamMemberBio {
+  width: 378px;
+  height: 50px;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 140%;
+  text-align: center;
+  color: #36392d;
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+@media (max-width: 1200px) {
+  .eventsSection {
+    min-height: unset;
+    padding: 64px 32px;
+  }
+
+  .eventsInner {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .eventsHeading {
+    position: static;
+    width: auto;
+    height: auto;
+    left: auto;
+    top: auto;
+    margin: 0 0 40px;
+  }
+
+  .eventsGrid {
+    grid-template-columns: repeat(2, minmax(320px, 1fr));
+  }
+
+  .eventCard {
+    width: 100%;
+    height: clamp(280px, 34vw, 637px);
+  }
+
+  .ourTeamSection {
+    min-height: unset;
+    padding: 64px 32px;
+  }
+
+  .whoAreWeSection {
+    min-height: unset;
+    padding: 64px 32px;
+  }
+
+  .ourTeamInner {
+    min-height: unset;
+  }
+
+  .whoAreWeInner {
+    min-height: unset;
+  }
+
+  .whoAreWeCocktailImage {
+    position: static;
+    width: min(570px, 100%);
+    height: clamp(420px, 72vw, 760px);
+    margin: 40px 0 0;
+  }
+
+  .whoAreWeCocktailArrowBtn {
+    position: static;
+    margin: 16px 0 0;
+  }
+
+  .whoAreWeCocktailArrowBtnRight {
+    position: static;
+    margin: 12px 0 0;
+  }
+
+  .whoAreWeCocktailSlogan {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 16px 0 0;
+  }
+
+  .whoAreWeCocktailPrice {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 12px 0 0;
+  }
+
+  .whoAreWeCocktailText {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 12px 0 0;
+  }
+
+  .whoAreWeDrinksFrames {
+    position: static;
+    width: min(570px, 100%);
+    margin: 24px 0 0;
+  }
+
+  .whoAreWeDrinkFrame {
+    width: 100%;
+    height: auto;
+    min-height: 144px;
+  }
+
+  .whoAreWeDrinkTitle {
+    width: auto;
+    height: auto;
+    font-size: clamp(42px, 10vw, 64px);
+    line-height: 1;
+  }
+
+  .ourTeamSlogan {
+    position: static;
+    width: auto;
+    height: auto;
+    left: auto;
+    top: auto;
+    margin: 0 0 40px;
+  }
+
+  .ourTeamIntroText {
+    position: static;
+    width: 100%;
+    height: auto;
+    left: auto;
+    top: auto;
+    margin: 0 0 24px;
+  }
+
+  .ourTeamCards {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .ourTeamAutoLayout {
+    width: min(378px, 100%);
+  }
+
+  .ourTeamAutoLayoutSecond {
+    width: min(378px, 100%);
+  }
+
+  .ourTeamAutoLayoutThird {
+    width: min(378px, 100%);
+  }
+
+  .ourTeamAutoLayoutFourth {
+    width: min(378px, 100%);
+  }
+
+  .ourTeamPhoto {
+    width: min(378px, 100%);
+    height: clamp(420px, 72vw, 567px);
+  }
+
+  .ourTeamPhotoSecond {
+    width: min(378px, 100%);
+    height: clamp(420px, 72vw, 567px);
+  }
+
+  .ourTeamPhotoThird {
+    width: min(378px, 100%);
+    height: clamp(420px, 72vw, 567px);
+  }
+
+  .ourTeamPhotoFourth {
+    width: min(378px, 100%);
+    height: clamp(420px, 72vw, 567px);
+  }
+
+  .ourTeamMemberName {
+    width: 100%;
+  }
+
+  .ourTeamMemberNameSecond {
+    width: 100%;
+  }
+
+  .ourTeamMemberNameThird {
+    width: 100%;
+  }
+
+  .ourTeamMemberNameFourth {
+    width: 100%;
+  }
+
+  .ourTeamMemberRoleFourth {
+    width: 100%;
+  }
+
+  .ourTeamMemberBioFourth {
+    width: 100%;
+  }
+
+  .ourTeamMemberRoleThird {
+    width: 100%;
+  }
+
+  .ourTeamMemberBioThird {
+    width: 100%;
+  }
+
+  .ourTeamMemberRoleSecond {
+    width: 100%;
+  }
+
+  .ourTeamMemberBioSecond {
+    width: 100%;
+  }
+
+  .ourTeamMemberRole {
+    width: 100%;
+  }
+
+  .ourTeamMemberBio {
+    width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .sectionBreak {
+    height: 80px;
+  }
+
+  .eventsSection {
+    padding: 48px 16px;
+  }
+
+  .eventsHeading {
+    font-size: 42px;
+    line-height: 42px;
+    margin: 0 0 24px;
+  }
+
+  .eventsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .eventTitle {
+    font-size: 26px;
+    line-height: 1;
+  }
+
+  .ourTeamSection {
+    padding: 48px 16px;
+  }
+
+  .whoAreWeSection {
+    padding: 48px 16px;
+  }
+
+  .ourTeamSlogan {
+    font-size: 42px;
+    line-height: 42px;
+    margin: 0 0 24px;
+  }
+
+  .whoAreWeSlogan {
+    font-size: 42px;
+    line-height: 42px;
+    margin: 0 0 24px;
+  }
+}
