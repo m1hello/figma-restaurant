@@ -208,7 +208,7 @@ export default function WhoAreWe() {
           />
         </button>
         <p className="whoAreWeCocktailSlogan">
-          {isWineSelected ? "Red Wine" : isBeerSelected ? "Miller Genuine Draft" : "Midnight Craze"}
+          {isWineSelected ? "Cabernet Sauvignon" : isBeerSelected ? "Miller Genuine Draft" : "Midnight Craze"}
         </p>
         <p className="whoAreWeCocktailPrice">$8</p>
         {isCocktailSelected && (

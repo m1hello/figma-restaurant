@@ -125,7 +125,7 @@ body {
 .eventOverlay {
   position: absolute;
   inset: 0;
-  background: rgba(149, 157, 123, 0.8);
+  background: rgba(149, 157, 123, 0.45);
 }
 
 .eventTitle {
@@ -628,7 +628,7 @@ body {
 
 .whoAreWeCocktailSlogan {
   position: absolute;
-  width: 155px;
+  width: auto;
   height: 20px;
   left: 229px;
   top: 2702px;
@@ -639,6 +639,7 @@ body {
   font-size: 20px;
   line-height: 20px;
   color: #36392d;
+  white-space: nowrap;
 }
 
 .whoAreWeCocktailPrice {
