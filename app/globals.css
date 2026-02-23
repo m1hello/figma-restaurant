@@ -14,6 +14,8 @@ html,
 body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -58,6 +60,7 @@ body {
 .eventsSection {
   position: relative;
   width: 100%;
+  overflow-x: hidden;
   min-height: 1837px;
   background: #cfd2c6;
   padding: 0;
@@ -143,6 +146,7 @@ body {
 .ourTeamSection {
   position: relative;
   width: 100%;
+  overflow-x: hidden;
   min-height: 1261px;
   background: #cfd2c6;
   padding: 0;
@@ -151,6 +155,7 @@ body {
 .whoAreWeSection {
   position: relative;
   width: 100%;
+  overflow-x: hidden;
   min-height: 2920px;
   background: #cfd2c6;
   padding: 0;
