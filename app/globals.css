@@ -711,6 +711,8 @@ body {
 
 .whoAreWeDrinkFrame15 {
   order: 1;
+  border-top: 1px solid #9fa68c;
+  border-bottom: 1px solid #9fa68c;
 }
 
 .whoAreWeDrinkFrame16 {

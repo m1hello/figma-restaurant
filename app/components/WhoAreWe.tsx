@@ -28,7 +28,7 @@ export default function WhoAreWe() {
   return (
     <section id="who-are-we" className="whoAreWeSection" aria-label="Who are we">
       <div className="whoAreWeInner">
-        <Navbar variant="light" layout="whoAreWe" />
+        <Navbar variant="light" />
         <h2 className="whoAreWeSlogan">Who are we?</h2>
         <p className="whoAreWeIntroText">
           Vulputate in elit tincidunt elit scelerisque massa fusce pharetra. Sagittis
