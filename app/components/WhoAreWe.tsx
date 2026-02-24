@@ -6,16 +6,17 @@ import Image from "next/image";
 
 export default function WhoAreWe() {
   const galleryRef = useRef<HTMLDivElement>(null);
+  const wineVideoSrc = "/Who%20are%20we/Cocktails/animate%20wine.mp4";
   const beerVideoSrc = "/Who%20are%20we/Cocktails/Beer%20animation.mp4";
+  const cocktailVideoSrc = "/Who%20are%20we/Cocktails/Cocktail%20animation.mp4";
   const [selectedMenu, setSelectedMenu] = useState("Pasta");
   const [selectedDrinkImageSrc, setSelectedDrinkImageSrc] = useState(
-    "/Who%20are%20we/Cocktails/emily-andreeva-hXg4gGjIfhw-unsplash%201.png",
+    cocktailVideoSrc,
   );
-  const isWineSelected = selectedDrinkImageSrc.includes("wine%20glass.jpg");
+  const isWineSelected = selectedDrinkImageSrc.includes("animate%20wine.mp4");
   const isBeerSelected = selectedDrinkImageSrc.includes("Beer%20animation.mp4");
-  const isCocktailSelected = selectedDrinkImageSrc.includes(
-    "emily-andreeva-hXg4gGjIfhw-unsplash%201.png",
-  );
+  const isCocktailSelected = selectedDrinkImageSrc.includes("Cocktail%20animation.mp4");
+  const isVideoSelected = isBeerSelected || isCocktailSelected || isWineSelected;
 
   const scrollGallery = (direction: "left" | "right") => {
     const gallery = galleryRef.current;
@@ -159,18 +160,18 @@ export default function WhoAreWe() {
             </div>
           </div>
         )}
-        {isBeerSelected ? (
+        {isVideoSelected ? (
           <video
+            key={selectedDrinkImageSrc}
             className="whoAreWeCocktailImage"
             aria-hidden="true"
             autoPlay
             loop
             muted
             playsInline
+            src={selectedDrinkImageSrc}
             style={{ objectFit: "cover" }}
-          >
-            <source src={beerVideoSrc} type="video/mp4" />
-          </video>
+          />
         ) : (
           <div
             className="whoAreWeCocktailImage"
@@ -184,11 +185,9 @@ export default function WhoAreWe() {
           aria-label="Cocktail previous"
           onClick={() => {
             if (isBeerSelected) {
-              setSelectedDrinkImageSrc(
-                "/Who%20are%20we/Cocktails/emily-andreeva-hXg4gGjIfhw-unsplash%201.png",
-              );
+              setSelectedDrinkImageSrc(cocktailVideoSrc);
             } else if (isCocktailSelected) {
-              setSelectedDrinkImageSrc("/Who%20are%20we/Cocktails/wine%20glass.jpg");
+              setSelectedDrinkImageSrc(wineVideoSrc);
             }
           }}
         >
@@ -206,9 +205,7 @@ export default function WhoAreWe() {
           aria-label="Cocktail next"
           onClick={() => {
             if (isWineSelected) {
-              setSelectedDrinkImageSrc(
-                "/Who%20are%20we/Cocktails/emily-andreeva-hXg4gGjIfhw-unsplash%201.png",
-              );
+              setSelectedDrinkImageSrc(cocktailVideoSrc);
             } else if (isCocktailSelected) {
               setSelectedDrinkImageSrc(beerVideoSrc);
             }
@@ -237,7 +234,7 @@ export default function WhoAreWe() {
             type="button"
             aria-label="Select wine image"
             onClick={() => {
-              setSelectedDrinkImageSrc("/Who%20are%20we/Cocktails/wine%20glass.jpg");
+              setSelectedDrinkImageSrc(wineVideoSrc);
             }}
           >
             <p
@@ -251,9 +248,7 @@ export default function WhoAreWe() {
             type="button"
             aria-label="Select cocktails image"
             onClick={() => {
-              setSelectedDrinkImageSrc(
-                "/Who%20are%20we/Cocktails/emily-andreeva-hXg4gGjIfhw-unsplash%201.png",
-              );
+              setSelectedDrinkImageSrc(cocktailVideoSrc);
             }}
           >
             <p
