@@ -170,7 +170,10 @@ export default function WhoAreWe() {
             muted
             playsInline
             src={selectedDrinkImageSrc}
-            style={{ objectFit: "cover" }}
+            style={{
+              objectFit: "cover",
+              objectPosition: isWineSelected ? "center top" : "center",
+            }}
           />
         ) : (
           <div
