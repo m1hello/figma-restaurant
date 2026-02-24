@@ -6,12 +6,13 @@ import Image from "next/image";
 
 export default function WhoAreWe() {
   const galleryRef = useRef<HTMLDivElement>(null);
+  const beerVideoSrc = "/Who%20are%20we/Cocktails/Beer%20animation.mp4";
   const [selectedMenu, setSelectedMenu] = useState("Pasta");
   const [selectedDrinkImageSrc, setSelectedDrinkImageSrc] = useState(
     "/Who%20are%20we/Cocktails/emily-andreeva-hXg4gGjIfhw-unsplash%201.png",
   );
   const isWineSelected = selectedDrinkImageSrc.includes("wine%20glass.jpg");
-  const isBeerSelected = selectedDrinkImageSrc.includes("beer%20glass.jpg");
+  const isBeerSelected = selectedDrinkImageSrc.includes("Beer%20animation.mp4");
   const isCocktailSelected = selectedDrinkImageSrc.includes(
     "emily-andreeva-hXg4gGjIfhw-unsplash%201.png",
   );
@@ -158,11 +159,25 @@ export default function WhoAreWe() {
             </div>
           </div>
         )}
-        <div
-          className="whoAreWeCocktailImage"
-          aria-hidden="true"
-          style={{ backgroundImage: `url("${selectedDrinkImageSrc}")` }}
-        />
+        {isBeerSelected ? (
+          <video
+            className="whoAreWeCocktailImage"
+            aria-hidden="true"
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{ objectFit: "cover" }}
+          >
+            <source src={beerVideoSrc} type="video/mp4" />
+          </video>
+        ) : (
+          <div
+            className="whoAreWeCocktailImage"
+            aria-hidden="true"
+            style={{ backgroundImage: `url("${selectedDrinkImageSrc}")` }}
+          />
+        )}
         <button
           className="whoAreWeCocktailArrowBtn"
           type="button"
@@ -195,7 +210,7 @@ export default function WhoAreWe() {
                 "/Who%20are%20we/Cocktails/emily-andreeva-hXg4gGjIfhw-unsplash%201.png",
               );
             } else if (isCocktailSelected) {
-              setSelectedDrinkImageSrc("/Who%20are%20we/Cocktails/beer%20glass.jpg");
+              setSelectedDrinkImageSrc(beerVideoSrc);
             }
           }}
         >
@@ -252,7 +267,7 @@ export default function WhoAreWe() {
             type="button"
             aria-label="Select beer image"
             onClick={() => {
-              setSelectedDrinkImageSrc("/Who%20are%20we/Cocktails/beer%20glass.jpg");
+              setSelectedDrinkImageSrc(beerVideoSrc);
             }}
           >
             <p
