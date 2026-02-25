@@ -1297,7 +1297,7 @@ body {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .sectionBreak {
     height: 80px;
   }
@@ -1339,5 +1339,89 @@ body {
     font-size: 42px;
     line-height: 42px;
     margin: 0 0 24px;
+  }
+
+  .whoAreWeMenuChip {
+    position: static;
+    left: auto;
+    top: auto;
+    width: min(280px, 100%);
+    margin: 0 auto;
+    display: flex;
+  }
+
+  .whoAreWeMenuChipAppetizers,
+  .whoAreWeMenuChipPasta,
+  .whoAreWeMenuChipPizza,
+  .whoAreWeMenuChipSalads,
+  .whoAreWeMenuChipSoups,
+  .whoAreWeMenuChipDesserts {
+    left: auto;
+    top: auto;
+  }
+
+  .whoAreWeMenuChipAppetizers {
+    margin-top: 24px;
+  }
+
+  .whoAreWeMenuChipPasta,
+  .whoAreWeMenuChipPizza,
+  .whoAreWeMenuChipSalads,
+  .whoAreWeMenuChipSoups,
+  .whoAreWeMenuChipDesserts {
+    margin-top: 12px;
+  }
+
+  .whoAreWeGallery {
+    position: static;
+    width: 100%;
+    height: auto;
+    left: auto;
+    top: auto;
+    margin: 24px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow: visible;
+  }
+
+  .whoAreWeInteriorImage1,
+  .whoAreWeInteriorImage2,
+  .whoAreWeInteriorImage3,
+  .whoAreWeInteriorImage4 {
+    width: min(651px, 100%);
+    height: clamp(220px, 64vw, 433px);
+  }
+
+  .whoAreWeMenuFrames {
+    position: static;
+    left: auto;
+    top: auto;
+    width: 100%;
+    height: auto;
+    margin: 24px 0 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .whoAreWeMenuFrame,
+  .whoAreWeMenuFramePizzaCard1,
+  .whoAreWeMenuFramePizzaCard2,
+  .whoAreWeMenuFramePizzaCard3,
+  .whoAreWeMenuFramePizzaCard4 {
+    width: min(336px, 100%);
+  }
+
+  .whoAreWeMenuFrame {
+    height: clamp(380px, 120vw, 569px);
+  }
+
+  .whoAreWeMenuFramePizzaImage1,
+  .whoAreWeMenuFramePizzaImage2,
+  .whoAreWeMenuFramePizzaImage3,
+  .whoAreWeMenuFramePizzaImage4 {
+    width: 100%;
+    height: clamp(320px, 95vw, 501px);
   }
 }
