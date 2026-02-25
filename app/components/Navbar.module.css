@@ -143,7 +143,22 @@
 }
 
 .mobileDropdown {
-  display: none;
+  position: absolute;
+  left: 80px;
+  top: calc(100% + 8px);
+  z-index: 20;
+  min-width: 220px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(207, 210, 198, 0.98);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .mobileDropdownLink {
@@ -164,6 +179,17 @@
 
 .whoAreWe.light .mobileDropdownLink {
   color: var(--Main-80);
+}
+
+.light .mobileDropdown {
+  background: rgba(54, 57, 45, 0.97);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.mobileDropdownOpen {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 /* Responsive: tablet */
@@ -232,33 +258,10 @@
   }
 
   .mobileDropdown {
-    position: absolute;
     left: 24px;
     right: 24px;
+    min-width: 0;
     top: calc(100% + 8px);
-    z-index: 20;
-    border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    padding: 12px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    background: rgba(207, 210, 198, 0.98);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-8px);
-    transition: opacity 0.2s ease, transform 0.2s ease;
-  }
-
-  .light .mobileDropdown {
-    background: rgba(54, 57, 45, 0.97);
-    border-color: rgba(255, 255, 255, 0.1);
-  }
-
-  .mobileDropdownOpen {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
   }
 
   .logoText {
