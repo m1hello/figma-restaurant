@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import type { MouseEvent } from "react";
+import { useState, type MouseEvent } from "react";
 import styles from "./Navbar.module.css";
 
 interface NavbarProps {
@@ -10,8 +10,10 @@ interface NavbarProps {
 }
 
 export default function Navbar({ variant = "dark", layout = "default" }: NavbarProps) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const iconColor = variant === "dark" ? "#CFD2C6" : "#36392D";
   const handleEventsClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    setIsMobileMenuOpen(false);
     event.preventDefault();
     const section = document.getElementById("events");
     if (!section) return;
@@ -19,6 +21,7 @@ export default function Navbar({ variant = "dark", layout = "default" }: NavbarP
     window.history.replaceState(null, "", "#events");
   };
   const handleMenuClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    setIsMobileMenuOpen(false);
     event.preventDefault();
     const section = document.getElementById("who-are-we-menu");
     if (!section) return;
@@ -26,6 +29,7 @@ export default function Navbar({ variant = "dark", layout = "default" }: NavbarP
     window.history.replaceState(null, "", "#who-are-we-menu");
   };
   const handleTeamClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    setIsMobileMenuOpen(false);
     event.preventDefault();
     const section = document.getElementById("our-team");
     if (!section) return;
@@ -33,6 +37,7 @@ export default function Navbar({ variant = "dark", layout = "default" }: NavbarP
     window.history.replaceState(null, "", "#our-team");
   };
   const handleContactClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    setIsMobileMenuOpen(false);
     event.preventDefault();
     const section = document.getElementById("footer");
     if (!section) return;
@@ -43,7 +48,14 @@ export default function Navbar({ variant = "dark", layout = "default" }: NavbarP
   return (
     <nav className={`${styles.navbar} ${styles[variant]} ${styles[layout]}`} aria-label="Primary">
       <div className={styles.navLeft}>
-        <button className={styles.hamburgerBtn} type="button" aria-label="Open menu">
+        <button
+          className={styles.hamburgerBtn}
+          type="button"
+          aria-label="Open menu"
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-nav-menu"
+          onClick={() => setIsMobileMenuOpen((current) => !current)}
+        >
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               fillRule="evenodd"
@@ -58,6 +70,23 @@ export default function Navbar({ variant = "dark", layout = "default" }: NavbarP
         </Link>
         <Link href="/#our-team" className={styles.navLink} onClick={handleTeamClick}>
           Team
+        </Link>
+      </div>
+      <div
+        id="mobile-nav-menu"
+        className={`${styles.mobileDropdown} ${isMobileMenuOpen ? styles.mobileDropdownOpen : ""}`}
+      >
+        <Link href="/#who-are-we-menu" className={styles.mobileDropdownLink} onClick={handleMenuClick}>
+          Menu
+        </Link>
+        <Link href="/#our-team" className={styles.mobileDropdownLink} onClick={handleTeamClick}>
+          Team
+        </Link>
+        <Link href="/#events" className={styles.mobileDropdownLink} onClick={handleEventsClick}>
+          Events
+        </Link>
+        <Link href="/#footer" className={styles.mobileDropdownLink} onClick={handleContactClick}>
+          Contact
         </Link>
       </div>
 

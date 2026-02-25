@@ -142,6 +142,30 @@
   text-decoration: underline;
 }
 
+.mobileDropdown {
+  display: none;
+}
+
+.mobileDropdownLink {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  text-decoration: none;
+}
+
+.dark .mobileDropdownLink {
+  color: #36392d;
+}
+
+.light .mobileDropdownLink {
+  color: var(--Main-80);
+}
+
+.whoAreWe.light .mobileDropdownLink {
+  color: var(--Main-80);
+}
+
 /* Responsive: tablet */
 @media (max-width: 1024px) {
   .navbar {
@@ -182,6 +206,10 @@
 /* Responsive: mobile */
 @media (max-width: 768px) {
   .navbar {
+    position: relative;
+  }
+
+  .navbar {
     grid-template-columns: auto 1fr auto;
     padding: 24px 24px;
   }
@@ -203,6 +231,36 @@
     display: none;
   }
 
+  .mobileDropdown {
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    top: calc(100% + 8px);
+    z-index: 20;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: rgba(207, 210, 198, 0.98);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .light .mobileDropdown {
+    background: rgba(54, 57, 45, 0.97);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .mobileDropdownOpen {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
   .logoText {
     font-size: 22px;
   }
@@ -216,6 +274,13 @@
 @media (max-width: 480px) {
   .navbar {
     padding: 20px 16px;
+  }
+
+  .mobileDropdown {
+    left: 16px;
+    right: 16px;
+    top: calc(100% + 6px);
+    padding: 10px 12px;
   }
 
   .navLeft,
