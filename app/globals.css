@@ -248,13 +248,38 @@ body {
   height: 433px;
   left: -197px;
   top: 448px;
+  overflow: hidden;
+}
+
+.whoAreWeGalleryTrack {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   padding: 0;
   gap: 40px;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  width: max-content;
+  animation: whoAreWeGalleryMarquee 26s linear infinite;
+}
+
+.whoAreWeGalleryTrack > div {
+  order: unset;
+}
+
+.whoAreWeGalleryTrackLeft {
+  animation-direction: normal;
+}
+
+.whoAreWeGalleryTrackRight {
+  animation-direction: reverse;
+}
+
+@keyframes whoAreWeGalleryMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .whoAreWeInteriorImage1 {
@@ -1403,10 +1428,14 @@ body {
     left: auto;
     top: auto;
     margin: 0;
+    overflow: visible;
+  }
+
+  .whoAreWeGalleryTrack {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    overflow: visible;
+    animation: none;
   }
 
   .whoAreWeInteriorImage1,
@@ -1415,6 +1444,10 @@ body {
   .whoAreWeInteriorImage4 {
     width: min(651px, 100%);
     height: clamp(220px, 64vw, 433px);
+  }
+
+  .whoAreWeGalleryTrack > :nth-child(n + 5) {
+    display: none;
   }
 
   .whoAreWeMenuSlogan {

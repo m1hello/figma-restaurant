@@ -1,11 +1,13 @@
 "use client";
 
-import { type KeyboardEvent, useRef, useState } from "react";
+import { type KeyboardEvent, useState } from "react";
 import Navbar from "./Navbar";
 import Image from "next/image";
 
 export default function WhoAreWe() {
-  const galleryRef = useRef<HTMLDivElement>(null);
+  const [galleryDirection, setGalleryDirection] = useState<"left" | "right">(
+    "left",
+  );
   const wineVideoSrc = "/Who%20are%20we/Cocktails/animate%20wine.mp4";
   const beerVideoSrc = "/Who%20are%20we/Cocktails/Beer%20animation.mp4";
   const cocktailVideoSrc = "/Who%20are%20we/Cocktails/Cocktail%20animation.mp4";
@@ -19,15 +21,6 @@ export default function WhoAreWe() {
   const isVideoSelected = isBeerSelected || isCocktailSelected || isWineSelected;
   const menuCategories = ["Appetizers", "Pasta", "Pizza", "Salads", "Soups", "Desserts"];
   const menuPanelId = `who-are-we-menu-panel-${selectedMenu.toLowerCase()}`;
-
-  const scrollGallery = (direction: "left" | "right") => {
-    const gallery = galleryRef.current;
-    if (!gallery) return;
-
-    const cardStep = 651 + 40;
-    const nextLeft = direction === "left" ? -cardStep : cardStep;
-    gallery.scrollBy({ left: nextLeft, behavior: "smooth" });
-  };
 
   const handleMenuTabsKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     const currentIndex = menuCategories.indexOf(selectedMenu);
@@ -60,8 +53,8 @@ export default function WhoAreWe() {
         <button
           className="whoAreWeArrowBtn"
           type="button"
-          aria-label="Previous"
-          onClick={() => scrollGallery("left")}
+          aria-label="Scroll gallery left"
+          onClick={() => setGalleryDirection("left")}
         >
           <Image
             className="whoAreWeArrowIcon"
@@ -74,8 +67,8 @@ export default function WhoAreWe() {
         <button
           className="whoAreWeArrowBtnRight"
           type="button"
-          aria-label="Next"
-          onClick={() => scrollGallery("right")}
+          aria-label="Scroll gallery right"
+          onClick={() => setGalleryDirection("right")}
         >
           <Image
             className="whoAreWeArrowIcon"
@@ -85,11 +78,24 @@ export default function WhoAreWe() {
             height={8}
           />
         </button>
-        <div ref={galleryRef} className="whoAreWeGallery" aria-label="Who are we gallery">
-          <div className="whoAreWeInteriorImage1" aria-hidden="true" />
-          <div className="whoAreWeInteriorImage2" aria-hidden="true" />
-          <div className="whoAreWeInteriorImage3" aria-hidden="true" />
-          <div className="whoAreWeInteriorImage4" aria-hidden="true" />
+        <div className="whoAreWeGallery" aria-label="Who are we gallery">
+          <div
+            className={`whoAreWeGalleryTrack ${
+              galleryDirection === "right"
+                ? "whoAreWeGalleryTrackRight"
+                : "whoAreWeGalleryTrackLeft"
+            }`}
+            aria-hidden="true"
+          >
+            <div className="whoAreWeInteriorImage1" />
+            <div className="whoAreWeInteriorImage2" />
+            <div className="whoAreWeInteriorImage3" />
+            <div className="whoAreWeInteriorImage4" />
+            <div className="whoAreWeInteriorImage1" />
+            <div className="whoAreWeInteriorImage2" />
+            <div className="whoAreWeInteriorImage3" />
+            <div className="whoAreWeInteriorImage4" />
+          </div>
         </div>
         <h2 id="who-are-we-menu" className="whoAreWeMenuSlogan">
           Menu
