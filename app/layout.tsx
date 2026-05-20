@@ -14,6 +14,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/Full-background.svg"
+          fetchPriority="high"
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
