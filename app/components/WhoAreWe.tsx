@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { type KeyboardEvent, useRef, useState } from "react";
 import Navbar from "./Navbar";
 import Image from "next/image";
 
@@ -17,6 +17,8 @@ export default function WhoAreWe() {
   const isBeerSelected = selectedDrinkImageSrc.includes("Beer%20animation.mp4");
   const isCocktailSelected = selectedDrinkImageSrc.includes("Cocktail%20animation.mp4");
   const isVideoSelected = isBeerSelected || isCocktailSelected || isWineSelected;
+  const menuCategories = ["Appetizers", "Pasta", "Pizza", "Salads", "Soups", "Desserts"];
+  const menuPanelId = `who-are-we-menu-panel-${selectedMenu.toLowerCase()}`;
 
   const scrollGallery = (direction: "left" | "right") => {
     const gallery = galleryRef.current;
@@ -25,6 +27,23 @@ export default function WhoAreWe() {
     const cardStep = 651 + 40;
     const nextLeft = direction === "left" ? -cardStep : cardStep;
     gallery.scrollBy({ left: nextLeft, behavior: "smooth" });
+  };
+
+  const handleMenuTabsKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    const currentIndex = menuCategories.indexOf(selectedMenu);
+    if (currentIndex === -1) return;
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      const nextIndex = (currentIndex + 1) % menuCategories.length;
+      setSelectedMenu(menuCategories[nextIndex]);
+    }
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      const prevIndex = (currentIndex - 1 + menuCategories.length) % menuCategories.length;
+      setSelectedMenu(menuCategories[prevIndex]);
+    }
   };
 
   return (
@@ -80,58 +99,39 @@ export default function WhoAreWe() {
           Risus convallis iaculis risus ac aliquam sit ultricies. Adipiscing adipiscing
           pellentesque tincidunt vitae. Aliquam dolor egestas nam congue elit dolor.
         </p>
-        <div className="whoAreWeMenuChips" aria-label="Menu categories">
-          <button
-            className={`whoAreWeMenuChip whoAreWeMenuChipAppetizers ${selectedMenu === "Appetizers" ? "whoAreWeMenuChipActive" : ""}`}
-            type="button"
-            aria-pressed={selectedMenu === "Appetizers"}
-            onClick={() => setSelectedMenu("Appetizers")}
-          >
-            Appetizers
-          </button>
-          <button
-            className={`whoAreWeMenuChip whoAreWeMenuChipPasta ${selectedMenu === "Pasta" ? "whoAreWeMenuChipActive" : ""}`}
-            type="button"
-            aria-pressed={selectedMenu === "Pasta"}
-            onClick={() => setSelectedMenu("Pasta")}
-          >
-            Pasta
-          </button>
-          <button
-            className={`whoAreWeMenuChip whoAreWeMenuChipPizza ${selectedMenu === "Pizza" ? "whoAreWeMenuChipActive" : ""}`}
-            type="button"
-            aria-pressed={selectedMenu === "Pizza"}
-            onClick={() => setSelectedMenu("Pizza")}
-          >
-            Pizza
-          </button>
-          <button
-            className={`whoAreWeMenuChip whoAreWeMenuChipSalads ${selectedMenu === "Salads" ? "whoAreWeMenuChipActive" : ""}`}
-            type="button"
-            aria-pressed={selectedMenu === "Salads"}
-            onClick={() => setSelectedMenu("Salads")}
-          >
-            Salads
-          </button>
-          <button
-            className={`whoAreWeMenuChip whoAreWeMenuChipSoups ${selectedMenu === "Soups" ? "whoAreWeMenuChipActive" : ""}`}
-            type="button"
-            aria-pressed={selectedMenu === "Soups"}
-            onClick={() => setSelectedMenu("Soups")}
-          >
-            Soups
-          </button>
-          <button
-            className={`whoAreWeMenuChip whoAreWeMenuChipDesserts ${selectedMenu === "Desserts" ? "whoAreWeMenuChipActive" : ""}`}
-            type="button"
-            aria-pressed={selectedMenu === "Desserts"}
-            onClick={() => setSelectedMenu("Desserts")}
-          >
-            Desserts
-          </button>
+        <div
+          className="whoAreWeMenuChips"
+          role="tablist"
+          aria-label="Menu categories"
+          onKeyDown={handleMenuTabsKeyDown}
+        >
+          {menuCategories.map((category) => {
+            const isSelected = selectedMenu === category;
+            const categoryClass = `whoAreWeMenuChip${category}`;
+            return (
+              <button
+                key={category}
+                id={`who-are-we-menu-tab-${category.toLowerCase()}`}
+                className={`whoAreWeMenuChip ${categoryClass} ${isSelected ? "whoAreWeMenuChipActive" : ""}`}
+                type="button"
+                role="tab"
+                aria-selected={isSelected}
+                aria-controls={`who-are-we-menu-panel-${category.toLowerCase()}`}
+                tabIndex={isSelected ? 0 : -1}
+                onClick={() => setSelectedMenu(category)}
+              >
+                {category}
+              </button>
+            );
+          })}
         </div>
         {selectedMenu === "Pasta" && (
-          <div className="whoAreWeMenuFrames" aria-label="Menu items">
+          <div
+            id={menuPanelId}
+            className="whoAreWeMenuFrames"
+            role="tabpanel"
+            aria-labelledby={`who-are-we-menu-tab-${selectedMenu.toLowerCase()}`}
+          >
             <div className="whoAreWeMenuFrame whoAreWeMenuFrame9" aria-hidden="true" />
             <div className="whoAreWeMenuFrame whoAreWeMenuFrame11" aria-hidden="true" />
             <div className="whoAreWeMenuFrame whoAreWeMenuFrame10" aria-hidden="true" />
@@ -139,7 +139,13 @@ export default function WhoAreWe() {
           </div>
         )}
         {selectedMenu === "Pizza" && (
-          <div className="whoAreWeMenuFrames" aria-label="Pizza items">
+          <div
+            id={menuPanelId}
+            className="whoAreWeMenuFrames"
+            role="tabpanel"
+            aria-labelledby={`who-are-we-menu-tab-${selectedMenu.toLowerCase()}`}
+            aria-label="Pizza items"
+          >
             <div className="whoAreWeMenuFrame whoAreWeMenuFramePizzaCard1">
               <div className="whoAreWeMenuFramePizzaImage1" aria-hidden="true" />
               <p className="whoAreWeMenuFramePizzaTitle">Mediterranean pizza</p>

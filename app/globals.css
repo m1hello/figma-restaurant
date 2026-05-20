@@ -376,6 +376,16 @@ body {
   border: 1px solid #b7bca9;
 }
 
+.whoAreWeMenuChip:focus-visible,
+.whoAreWeDrinkFrameBtn:focus-visible,
+.whoAreWeArrowBtn:focus-visible,
+.whoAreWeArrowBtnRight:focus-visible,
+.whoAreWeCocktailArrowBtn:focus-visible,
+.whoAreWeCocktailArrowBtnRight:focus-visible {
+  outline: 2px solid #36392d;
+  outline-offset: 2px;
+}
+
 .whoAreWeMenuChipAppetizers {
   width: 158px;
 }
