@@ -309,8 +309,9 @@ body {
   position: absolute;
   width: 184px;
   height: 64px;
-  left: 868px;
+  left: 50%;
   top: 961px;
+  transform: translateX(-50%);
   margin: 0;
   font-family: "Clash Display", sans-serif;
   font-style: normal;
@@ -324,8 +325,9 @@ body {
   position: absolute;
   width: 570px;
   height: 116px;
-  left: 675px;
+  left: 50%;
   top: 1049px;
+  transform: translateX(-50%);
   margin: 0;
   font-family: Roboto, sans-serif;
   font-style: normal;
@@ -336,9 +338,19 @@ body {
   color: #36392d;
 }
 
+.whoAreWeMenuChips {
+  position: absolute;
+  left: 50%;
+  top: 1189px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
 .whoAreWeMenuChip {
   box-sizing: border-box;
-  position: absolute;
+  position: static;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -366,44 +378,33 @@ body {
 
 .whoAreWeMenuChipAppetizers {
   width: 158px;
-  left: 463px;
-  top: 1189px;
 }
 
 .whoAreWeMenuChipPasta {
   width: 121px;
-  left: 659px;
-  top: 1189px;
 }
 
 .whoAreWeMenuChipPizza {
   width: 120px;
-  left: 820px;
-  top: 1189px;
 }
 
 .whoAreWeMenuChipSalads {
   width: 129px;
-  left: 979px;
-  top: 1189px;
 }
 
 .whoAreWeMenuChipSoups {
   width: 125px;
-  left: 1148px;
-  top: 1189px;
 }
 
 .whoAreWeMenuChipDesserts {
   width: 144px;
-  left: 1313px;
-  top: 1189px;
 }
 
 .whoAreWeMenuFrames {
   position: absolute;
-  left: 172px;
+  left: 50%;
   top: 1277px;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1361,6 +1362,18 @@ body {
     top: auto;
   }
 
+  .whoAreWeMenuChips {
+    position: static;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
   .whoAreWeMenuChipAppetizers {
     margin-top: 24px;
   }
@@ -1400,6 +1413,7 @@ body {
     height: auto;
     left: auto;
     top: auto;
+    transform: none;
     margin: 24px 0 12px;
     font-size: clamp(36px, 10vw, 64px);
     line-height: 1;
@@ -1412,6 +1426,7 @@ body {
     height: auto;
     left: auto;
     top: auto;
+    transform: none;
     margin: 0 0 16px;
     text-align: center;
   }
@@ -1420,6 +1435,7 @@ body {
     position: static;
     left: auto;
     top: auto;
+    transform: none;
     width: 100%;
     height: auto;
     margin: 24px 0 0;

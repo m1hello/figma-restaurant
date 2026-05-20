@@ -80,54 +80,56 @@ export default function WhoAreWe() {
           Risus convallis iaculis risus ac aliquam sit ultricies. Adipiscing adipiscing
           pellentesque tincidunt vitae. Aliquam dolor egestas nam congue elit dolor.
         </p>
-        <button
-          className={`whoAreWeMenuChip whoAreWeMenuChipAppetizers ${selectedMenu === "Appetizers" ? "whoAreWeMenuChipActive" : ""}`}
-          type="button"
-          aria-pressed={selectedMenu === "Appetizers"}
-          onClick={() => setSelectedMenu("Appetizers")}
-        >
-          Appetizers
-        </button>
-        <button
-          className={`whoAreWeMenuChip whoAreWeMenuChipPasta ${selectedMenu === "Pasta" ? "whoAreWeMenuChipActive" : ""}`}
-          type="button"
-          aria-pressed={selectedMenu === "Pasta"}
-          onClick={() => setSelectedMenu("Pasta")}
-        >
-          Pasta
-        </button>
-        <button
-          className={`whoAreWeMenuChip whoAreWeMenuChipPizza ${selectedMenu === "Pizza" ? "whoAreWeMenuChipActive" : ""}`}
-          type="button"
-          aria-pressed={selectedMenu === "Pizza"}
-          onClick={() => setSelectedMenu("Pizza")}
-        >
-          Pizza
-        </button>
-        <button
-          className={`whoAreWeMenuChip whoAreWeMenuChipSalads ${selectedMenu === "Salads" ? "whoAreWeMenuChipActive" : ""}`}
-          type="button"
-          aria-pressed={selectedMenu === "Salads"}
-          onClick={() => setSelectedMenu("Salads")}
-        >
-          Salads
-        </button>
-        <button
-          className={`whoAreWeMenuChip whoAreWeMenuChipSoups ${selectedMenu === "Soups" ? "whoAreWeMenuChipActive" : ""}`}
-          type="button"
-          aria-pressed={selectedMenu === "Soups"}
-          onClick={() => setSelectedMenu("Soups")}
-        >
-          Soups
-        </button>
-        <button
-          className={`whoAreWeMenuChip whoAreWeMenuChipDesserts ${selectedMenu === "Desserts" ? "whoAreWeMenuChipActive" : ""}`}
-          type="button"
-          aria-pressed={selectedMenu === "Desserts"}
-          onClick={() => setSelectedMenu("Desserts")}
-        >
-          Desserts
-        </button>
+        <div className="whoAreWeMenuChips" aria-label="Menu categories">
+          <button
+            className={`whoAreWeMenuChip whoAreWeMenuChipAppetizers ${selectedMenu === "Appetizers" ? "whoAreWeMenuChipActive" : ""}`}
+            type="button"
+            aria-pressed={selectedMenu === "Appetizers"}
+            onClick={() => setSelectedMenu("Appetizers")}
+          >
+            Appetizers
+          </button>
+          <button
+            className={`whoAreWeMenuChip whoAreWeMenuChipPasta ${selectedMenu === "Pasta" ? "whoAreWeMenuChipActive" : ""}`}
+            type="button"
+            aria-pressed={selectedMenu === "Pasta"}
+            onClick={() => setSelectedMenu("Pasta")}
+          >
+            Pasta
+          </button>
+          <button
+            className={`whoAreWeMenuChip whoAreWeMenuChipPizza ${selectedMenu === "Pizza" ? "whoAreWeMenuChipActive" : ""}`}
+            type="button"
+            aria-pressed={selectedMenu === "Pizza"}
+            onClick={() => setSelectedMenu("Pizza")}
+          >
+            Pizza
+          </button>
+          <button
+            className={`whoAreWeMenuChip whoAreWeMenuChipSalads ${selectedMenu === "Salads" ? "whoAreWeMenuChipActive" : ""}`}
+            type="button"
+            aria-pressed={selectedMenu === "Salads"}
+            onClick={() => setSelectedMenu("Salads")}
+          >
+            Salads
+          </button>
+          <button
+            className={`whoAreWeMenuChip whoAreWeMenuChipSoups ${selectedMenu === "Soups" ? "whoAreWeMenuChipActive" : ""}`}
+            type="button"
+            aria-pressed={selectedMenu === "Soups"}
+            onClick={() => setSelectedMenu("Soups")}
+          >
+            Soups
+          </button>
+          <button
+            className={`whoAreWeMenuChip whoAreWeMenuChipDesserts ${selectedMenu === "Desserts" ? "whoAreWeMenuChipActive" : ""}`}
+            type="button"
+            aria-pressed={selectedMenu === "Desserts"}
+            onClick={() => setSelectedMenu("Desserts")}
+          >
+            Desserts
+          </button>
+        </div>
         {selectedMenu === "Pasta" && (
           <div className="whoAreWeMenuFrames" aria-label="Menu items">
             <div className="whoAreWeMenuFrame whoAreWeMenuFrame9" aria-hidden="true" />
