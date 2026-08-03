@@ -43,7 +43,7 @@ export function CartWidget({ cart, onAddToCart, onRemoveFromCart }: CartWidgetPr
     e.stopPropagation();
     setIsOpen(false);
     if (!userId) {
-      openSignIn({ redirectUrl: window.location.href });
+      openSignIn({ fallbackRedirectUrl: window.location.href });
       return;
     }
 
