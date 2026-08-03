@@ -26,7 +26,8 @@ export async function GET() {
     {
       headers: {
         Authorization: `Bearer ${API_KEY}`,
-        Accept: "application/json",
+        Accept: "application/vnd.api+json",
+        "Content-Type": "application/vnd.api+json",
       },
       next: { revalidate: 3600 },
     }
