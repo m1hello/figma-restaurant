@@ -1,26 +1,95 @@
 "use client";
 
-import { type KeyboardEvent, useState } from "react";
-import Navbar from "./Navbar";
+import { type KeyboardEvent, useEffect, useState } from "react";
+import Navbar, { CartWidget, type CartItem } from "./Navbar";
 import Image from "next/image";
 
+const pastaItems = [
+  { id: "gnocchi", name: "Gnocchi with almonds", price: 10, frameClass: "whoAreWeMenuFrame9" },
+  { id: "ravioli", name: "Mini spinach ravioli", price: 12, frameClass: "whoAreWeMenuFrame11" },
+  { id: "lasagna", name: "Lasagna", price: 9, frameClass: "whoAreWeMenuFrame10" },
+  { id: "carbonara", name: "Carbonara spaghetti", price: 13, frameClass: "whoAreWeMenuFrame12" },
+];
+
+// Maps pasta item id to Lemon Squeezy variant name (must match your LS dashboard)
+const VARIANT_NAME_MAP: Record<string, string> = {
+  gnocchi: "Gnocchi with almonds",
+  ravioli: "Mini spinach ravioli",
+  lasagna: "Lasagna",
+  carbonara: "Carbonara spaghetti",
+};
+
+const CART_STORAGE_KEY = "cibo-gustoso-cart";
+
 export default function WhoAreWe() {
-  const [galleryDirection, setGalleryDirection] = useState<"left" | "right">(
-    "left",
-  );
+  const [galleryDirection, setGalleryDirection] = useState<"left" | "right">("left");
   const wineVideoSrc = "/Who%20are%20we/Cocktails/animate%20wine.mp4";
   const beerVideoSrc = "/Who%20are%20we/Cocktails/Beer%20animation.mp4";
   const cocktailVideoSrc = "/Who%20are%20we/Cocktails/Cocktail%20animation.mp4";
   const [selectedMenu, setSelectedMenu] = useState("Pasta");
-  const [selectedDrinkImageSrc, setSelectedDrinkImageSrc] = useState(
-    cocktailVideoSrc,
-  );
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const [variantIds, setVariantIds] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    fetch("/api/variants")
+      .then((r) => r.json())
+      .then(({ variants }) => {
+        const map: Record<string, string> = {};
+        for (const [itemId, variantName] of Object.entries(VARIANT_NAME_MAP)) {
+          const match = variants.find((v: { id: string; name: string }) => v.name === variantName);
+          if (match) map[itemId] = match.id;
+        }
+        setVariantIds(map);
+      })
+      .catch(() => {});
+  }, []);
+  const [selectedDrinkImageSrc, setSelectedDrinkImageSrc] = useState(cocktailVideoSrc);
   const isWineSelected = selectedDrinkImageSrc.includes("animate%20wine.mp4");
   const isBeerSelected = selectedDrinkImageSrc.includes("Beer%20animation.mp4");
   const isCocktailSelected = selectedDrinkImageSrc.includes("Cocktail%20animation.mp4");
   const isVideoSelected = isBeerSelected || isCocktailSelected || isWineSelected;
   const menuCategories = ["Appetizers", "Pasta", "Pizza", "Salads", "Soups", "Desserts"];
   const menuPanelId = `who-are-we-menu-panel-${selectedMenu.toLowerCase()}`;
+
+  useEffect(() => {
+    try {
+      const savedCart = window.localStorage.getItem(CART_STORAGE_KEY);
+      const parsedCart: unknown = savedCart ? JSON.parse(savedCart) : [];
+      setCart(Array.isArray(parsedCart) ? (parsedCart as CartItem[]) : []);
+    } catch {
+      window.localStorage.removeItem(CART_STORAGE_KEY);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+  }, [cart]);
+
+  const addToCart = (item: Omit<CartItem, "quantity">) => {
+    setCart((previousCart) => {
+      const existingItem = previousCart.find((cartItem) => cartItem.id === item.id);
+      if (existingItem) {
+        return previousCart.map((cartItem) =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            : cartItem,
+        );
+      }
+      return [...previousCart, { ...item, quantity: 1 }];
+    });
+  };
+
+  const removeFromCart = (itemId: string) => {
+    setCart((previousCart) =>
+      previousCart
+        .map((cartItem) =>
+          cartItem.id === itemId
+            ? { ...cartItem, quantity: cartItem.quantity - 1 }
+            : cartItem,
+        )
+        .filter((cartItem) => cartItem.quantity > 0),
+    );
+  };
 
   const handleMenuTabsKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     const currentIndex = menuCategories.indexOf(selectedMenu);
@@ -42,7 +111,12 @@ export default function WhoAreWe() {
   return (
     <section id="who-are-we" className="whoAreWeSection" aria-label="Who are we">
       <div className="whoAreWeInner">
-        <Navbar variant="light" />
+        <Navbar
+          variant="light"
+          cart={cart}
+          onAddToCart={addToCart}
+          onRemoveFromCart={removeFromCart}
+        />
         <h2 className="whoAreWeSlogan">Who are we?</h2>
         <p className="whoAreWeIntroText">
           Vulputate in elit tincidunt elit scelerisque massa fusce pharetra. Sagittis
@@ -134,14 +208,48 @@ export default function WhoAreWe() {
         {selectedMenu === "Pasta" && (
           <div
             id={menuPanelId}
-            className="whoAreWeMenuFrames"
+            className="whoAreWeMenuFrames whoAreWeMenuFramesPasta"
             role="tabpanel"
             aria-labelledby={`who-are-we-menu-tab-${selectedMenu.toLowerCase()}`}
           >
-            <div className="whoAreWeMenuFrame whoAreWeMenuFrame9" aria-hidden="true" />
-            <div className="whoAreWeMenuFrame whoAreWeMenuFrame11" aria-hidden="true" />
-            <div className="whoAreWeMenuFrame whoAreWeMenuFrame10" aria-hidden="true" />
-            <div className="whoAreWeMenuFrame whoAreWeMenuFrame12" aria-hidden="true" />
+            {pastaItems.map((item) => {
+              const cartItemCount = cart.find((cartItem) => cartItem.id === item.id)?.quantity ?? 0;
+              return (
+                <div className="whoAreWeMenuPastaCard" key={item.id}>
+                  <div className={`whoAreWeMenuFrame ${item.frameClass}`} aria-hidden="true" />
+                  <div className="whoAreWeMenuPastaControls" aria-label={`${item.name} controls`}>
+                    <button
+                      className="whoAreWeMenuControlButton"
+                      type="button"
+                      aria-label={`Remove one ${item.name} from cart`}
+                      disabled={cartItemCount === 0}
+                      onClick={() => removeFromCart(item.id)}
+                    >
+                      −
+                    </button>
+                    <span className="whoAreWeMenuPrice">${item.price}</span>
+                    <button
+                      className="whoAreWeMenuControlButton"
+                      type="button"
+                      aria-label={`Add one ${item.name} to cart`}
+                      onClick={() => addToCart({ id: item.id, name: item.name, price: item.price, variantId: variantIds[item.id] })}
+                    >
+                      +
+                    </button>
+                    <span className="whoAreWeMenuCartStatus" aria-live="polite" suppressHydrationWarning>
+                      {cartItemCount > 0 ? `${cartItemCount} in cart` : "Not in cart"}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+            <div className="whoAreWeMenuCartIcon">
+              <CartWidget
+                cart={cart}
+                onAddToCart={addToCart}
+                onRemoveFromCart={removeFromCart}
+              />
+            </div>
           </div>
         )}
         {selectedMenu === "Pizza" && (
@@ -250,13 +358,9 @@ export default function WhoAreWe() {
             className="whoAreWeDrinkFrame whoAreWeDrinkFrame14 whoAreWeDrinkFrameBtn"
             type="button"
             aria-label="Select wine image"
-            onClick={() => {
-              setSelectedDrinkImageSrc(wineVideoSrc);
-            }}
+            onClick={() => setSelectedDrinkImageSrc(wineVideoSrc)}
           >
-            <p
-              className={`whoAreWeDrinkTitle whoAreWeDrinkTitleWine ${isWineSelected ? "whoAreWeDrinkTitleActive" : ""}`}
-            >
+            <p className={`whoAreWeDrinkTitle whoAreWeDrinkTitleWine ${isWineSelected ? "whoAreWeDrinkTitleActive" : ""}`}>
               Wine
             </p>
           </button>
@@ -264,13 +368,9 @@ export default function WhoAreWe() {
             className="whoAreWeDrinkFrame whoAreWeDrinkFrame15 whoAreWeDrinkFrameBtn"
             type="button"
             aria-label="Select cocktails image"
-            onClick={() => {
-              setSelectedDrinkImageSrc(cocktailVideoSrc);
-            }}
+            onClick={() => setSelectedDrinkImageSrc(cocktailVideoSrc)}
           >
-            <p
-              className={`whoAreWeDrinkTitle whoAreWeDrinkTitleCocktails ${isBeerSelected || isWineSelected ? "whoAreWeDrinkTitleMuted" : ""}`}
-            >
+            <p className={`whoAreWeDrinkTitle whoAreWeDrinkTitleCocktails ${isBeerSelected || isWineSelected ? "whoAreWeDrinkTitleMuted" : ""}`}>
               Cocktails
             </p>
           </button>
@@ -278,13 +378,9 @@ export default function WhoAreWe() {
             className="whoAreWeDrinkFrame whoAreWeDrinkFrame16 whoAreWeDrinkFrameBtn"
             type="button"
             aria-label="Select beer image"
-            onClick={() => {
-              setSelectedDrinkImageSrc(beerVideoSrc);
-            }}
+            onClick={() => setSelectedDrinkImageSrc(beerVideoSrc)}
           >
-            <p
-              className={`whoAreWeDrinkTitle whoAreWeDrinkTitleBeer ${isBeerSelected ? "whoAreWeDrinkTitleActive" : ""}`}
-            >
+            <p className={`whoAreWeDrinkTitle whoAreWeDrinkTitleBeer ${isBeerSelected ? "whoAreWeDrinkTitleActive" : ""}`}>
               Beer
             </p>
           </button>

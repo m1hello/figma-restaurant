@@ -140,6 +140,149 @@
 
 .navLinkLang {
   text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.cartWidget {
+  position: relative;
+  color: currentColor;
+}
+
+.cartTrigger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -7px;
+  right: -9px;
+  display: flex;
+  width: 18px;
+  height: 18px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #cfd2c6;
+  background: #36392d;
+  font-family: Roboto, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.cartDropdown {
+  position: absolute;
+  z-index: 1000;
+  top: 40px;
+  right: 0;
+  width: 280px;
+  padding: 16px;
+  border: 1px solid #9fa68c;
+  border-radius: 8px;
+  color: #36392d;
+  background: #cfd2c6;
+  box-shadow: 0 8px 20px rgba(18, 20, 15, 0.16);
+  isolation: isolate;
+}
+
+.cartEmpty,
+.cartItem,
+.cartTotal {
+  margin: 0;
+  color: #36392d;
+  font-family: Roboto, sans-serif;
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.cartItemName {
+  flex: 1;
+  font-size: 14px;
+}
+
+.cartQuantityButton {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid #36392d;
+  color: #36392d;
+  background: transparent;
+  cursor: pointer;
+}
+
+.cartItemQuantity {
+  min-width: 12px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.cartItemSubtotal {
+  min-width: 48px;
+  font-size: 14px;
+  text-align: right;
+}
+
+.cartTotal {
+  flex: 1;
+  margin-top: 8px;
+  padding-top: 8px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.cartFooter {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+  border-top: 1px solid #9fa68c;
+}
+
+.checkoutButton {
+  min-height: 30px;
+  margin-top: 8px;
+  padding: 0 10px;
+  border: 1px solid #36392d;
+  color: #cfd2c6;
+  background: #36392d;
+  font-family: Roboto, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.checkoutButton:hover,
+.checkoutButton:focus-visible {
+  color: #36392d;
+  background: transparent;
+}
+
+.checkoutButton:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.checkoutError {
+  margin: 8px 0 0;
+  color: #8d2727;
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  line-height: 1.35;
 }
 
 .mobileDropdown {

@@ -1,17 +1,143 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type MouseEvent } from "react";
+import { useState, useEffect, type MouseEvent } from "react";
+import { SignInButton, SignOutButton, useAuth, useClerk } from "@clerk/nextjs";
 import styles from "./Navbar.module.css";
 
 interface NavbarProps {
   variant?: "dark" | "light";
   layout?: "default" | "whoAreWe";
+  cart?: CartItem[];
+  onAddToCart?: (item: Omit<CartItem, "quantity">) => void;
+  onRemoveFromCart?: (itemId: string) => void;
 }
 
-export default function Navbar({ variant = "dark", layout = "default" }: NavbarProps) {
+export interface CartItem {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  variantId?: string;
+}
+
+interface CartWidgetProps {
+  cart: CartItem[];
+  onAddToCart: (item: Omit<CartItem, "quantity">) => void;
+  onRemoveFromCart: (itemId: string) => void;
+}
+
+export function CartWidget({ cart, onAddToCart, onRemoveFromCart }: CartWidgetProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [checkoutError, setCheckoutError] = useState("");
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { userId } = useAuth();
+  const { openSignIn } = useClerk();
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  useEffect(() => { setMounted(true); }, []);
+
+  const handleCheckout = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsOpen(false);
+    if (!userId) {
+      openSignIn({ redirectUrl: window.location.href });
+      return;
+    }
+
+    if (cart.length === 0) {
+      setCheckoutError("Your cart is empty.");
+      return;
+    }
+
+    setCheckoutError("");
+    setIsCheckingOut(true);
+
+    try {
+      const response = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cart, userId }),
+      });
+      const { checkoutUrl } = await response.json();
+
+      if (!response.ok || !checkoutUrl) {
+        throw new Error("Unable to create a checkout session.");
+      }
+
+      window.location.href = checkoutUrl;
+    } catch (error) {
+      setCheckoutError(
+        error instanceof Error ? error.message : "Unable to create a checkout session.",
+      );
+      setIsCheckingOut(false);
+    }
+  };
+
+  return (
+    <div className={styles.cartWidget}>
+      <button
+        className={styles.cartTrigger}
+        type="button"
+        aria-label="Shopping cart"
+        aria-expanded={isOpen}
+        onClick={() => setIsOpen((open) => !open)}
+      >
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 01-8 0" />
+        </svg>
+        {mounted && totalItems > 0 && <span className={styles.cartBadge}>{totalItems}</span>}
+      </button>
+      {isOpen && (
+        <div className={styles.cartDropdown} onClick={(e) => e.stopPropagation()}>
+          {cart.length === 0 ? (
+            <p className={styles.cartEmpty}>Your cart is empty</p>
+          ) : (
+            <>
+              {cart.map((item) => (
+                <div className={styles.cartItem} key={item.id}>
+                  <span className={styles.cartItemName}>{item.name}</span>
+                  <button type="button" className={styles.cartQuantityButton} onClick={() => onRemoveFromCart(item.id)} aria-label={`Remove one ${item.name}`}>&minus;</button>
+                  <span className={styles.cartItemQuantity}>{item.quantity}</span>
+                  <button type="button" className={styles.cartQuantityButton} onClick={() => onAddToCart({ id: item.id, name: item.name, price: item.price })} aria-label={`Add one ${item.name}`}>+</button>
+                  <span className={styles.cartItemSubtotal}>${(item.price * item.quantity).toFixed(2)}</span>
+                </div>
+              ))}
+              <div className={styles.cartFooter}>
+                <button
+                  className={styles.checkoutButton}
+                  type="button"
+                  disabled={isCheckingOut}
+                  onClick={handleCheckout}
+                >
+                  {isCheckingOut ? "OPENING CHECKOUT..." : "CHECKOUT"}
+                </button>
+                <p className={styles.cartTotal}>Total: ${totalPrice.toFixed(2)}</p>
+              </div>
+              {checkoutError && <p className={styles.checkoutError}>{checkoutError}</p>}
+            </>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function Navbar({
+  variant = "dark",
+  layout = "default",
+  cart,
+  onAddToCart,
+  onRemoveFromCart,
+}: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isSignedIn } = useAuth();
   const iconColor = variant === "dark" ? "#CFD2C6" : "#36392D";
+
   const handleEventsClick = (event: MouseEvent<HTMLAnchorElement>) => {
     setIsMobileMenuOpen(false);
     event.preventDefault();
@@ -101,7 +227,18 @@ export default function Navbar({ variant = "dark", layout = "default" }: NavbarP
         <Link href="/#footer" className={styles.navLink} onClick={handleContactClick}>
           Contact
         </Link>
-        <Link href="#" className={`${styles.navLink} ${styles.navLinkLang}`}>EN</Link>
+        {cart && onAddToCart && onRemoveFromCart && (
+          <CartWidget cart={cart} onAddToCart={onAddToCart} onRemoveFromCart={onRemoveFromCart} />
+        )}
+        {isSignedIn ? (
+          <SignOutButton>
+            <button className={`${styles.navLink} ${styles.navLinkLang}`}>Sign Out</button>
+          </SignOutButton>
+        ) : (
+          <SignInButton>
+            <button className={`${styles.navLink} ${styles.navLinkLang}`}>Sign In</button>
+          </SignInButton>
+        )}
       </div>
     </nav>
   );
