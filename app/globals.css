@@ -257,12 +257,14 @@ body {
   align-items: flex-start;
   padding: 0;
   gap: 40px;
-  width: max-content;
+  width: 200%;
   animation: whoAreWeGalleryMarquee 26s linear infinite;
+  will-change: transform;
 }
 
 .whoAreWeGalleryTrack > div {
   order: unset;
+  flex: 0 0 auto;
 }
 
 .whoAreWeGalleryTrackLeft {

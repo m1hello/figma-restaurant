@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const { cart }: { cart: CartItem[] } = await req.json();
+  const {cart}: { cart: CartItem[] } = await req.json();
 
   if (!cart || cart.length === 0) {
     return NextResponse.json({ error: "Cart is empty" }, { status: 400 });
